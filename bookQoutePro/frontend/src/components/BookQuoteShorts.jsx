@@ -7,8 +7,7 @@ const apiService = {
   // Fetch all quotes
   async getQuotesList() {
     try {
-      const response = await axios.get('http://localhost:5000/api/quotes/quotesList');
-      console.log(response.status,"response=========",response.data)
+      const response = await axios.get('https://backendbookqoutes.onrender.com/api/quotes/quotesList');
 
 
       if (response.status!=200) throw new Error('Failed to fetch quotes');
@@ -22,13 +21,12 @@ const apiService = {
   // Like a quote
   async likeQuote(quoteId) {
     try {
-      const response = await axios.put(`http://localhost:5000/api/quotes/${quoteId}/like`, {
+      const response = await axios.put(`https://backendbookqoutes.onrender.com/api/quotes/${quoteId}/like`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      console.log("response",response.data);
       
       if (response.status!=200) throw new Error('Failed to like quote');
       return await response.data.data;
@@ -41,7 +39,7 @@ const apiService = {
   // Unlike a quote
   async unlikeQuote(quoteId) {
     try {
-      const response = await axios.put(`http://localhost:5000/api/quotes/${quoteId}/unlike`, {
+      const response = await axios.put(`https://backendbookqoutes.onrender.com/api/quotes/${quoteId}/unlike`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -189,7 +187,6 @@ const BookQuoteShorts = () => {
   };
 
   const currentQuote = quotes[currentQuoteIndex];
-console.log("currentQuote==",currentQuote);
 
   // Loading state
   if (loading) {
